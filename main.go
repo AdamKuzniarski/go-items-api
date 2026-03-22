@@ -2,32 +2,9 @@ package main
 
 import (
 	"net/http"
-	"sync"
 
 	"github.com/gin-gonic/gin"
 )
-
-type Item struct {
-	ID   int    `json:"id"`
-	Name string `json:"name"`
-}
-
-type CreateItemInput struct {
-	Name string `json:"name" binding:"required"`
-}
-
-type Store struct {
-	mu     sync.Mutex
-	items  []Item
-	nextID int
-}
-
-func NewStore() *Store {
-	return &Store{
-		items:  []Item{},
-		nextID: 1,
-	}
-}
 
 func setupRouter(store *Store) *gin.Engine {
 	r := gin.Default()
