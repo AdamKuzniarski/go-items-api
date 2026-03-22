@@ -1,0 +1,31 @@
+# Binaries and build outputs
+/bin/
+/dist/
+/build/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test artifacts
+*.test
+*.out
+coverage.out
+coverage.html
+
+# Go workspace / vendoring (enable if you vendor deps)
+# vendor/
+
+# Environment files
+.env
+.env.*
+
+# JetBrains / IntelliJ
+.idea/
+*.iml
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
