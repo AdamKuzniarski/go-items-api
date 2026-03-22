@@ -66,7 +66,7 @@ func TestGetItemsAfterPost(t *testing.T) {
 	body := map[string]string{
 		"name": "Mouse",
 	}
-
+	//Duplicate for better readability
 	jsonBody, err := json.Marshal(body)
 	if err != nil {
 		t.Fatalf("failed to marshal body: %v", err)
