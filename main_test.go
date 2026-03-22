@@ -12,7 +12,11 @@ import (
 
 func setupTestRouter() *gin.Engine {
 	gin.SetMode(gin.TestMode)
-	return setupRouter(NewStore())
+
+	store := NewStore()
+	handler := NewHandler(store)
+
+	return NewRouter(handler)
 }
 
 func TestHealth(t *testing.T) {
@@ -24,7 +28,7 @@ func TestHealth(t *testing.T) {
 	router.ServeHTTP(w, req)
 
 	if w.Code != http.StatusOK {
-		t.Errorf("expected 200, got %d", w.Code)
+		t.Fatalf("expected 200, got %d", w.Code)
 	}
 }
 
@@ -66,7 +70,7 @@ func TestGetItemsAfterPost(t *testing.T) {
 	body := map[string]string{
 		"name": "Mouse",
 	}
-	//Duplicate for better readability
+
 	jsonBody, err := json.Marshal(body)
 	if err != nil {
 		t.Fatalf("failed to marshal body: %v", err)
