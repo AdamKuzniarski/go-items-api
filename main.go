@@ -67,3 +67,11 @@ func setupRouter(store *Store) *gin.Engine {
 
 	return r
 }
+func main() {
+	store := NewStore()
+	r := setupRouter(store)
+
+	if err := r.Run(":8080"); err != nil {
+		panic(err)
+	}
+}
