@@ -67,3 +67,4 @@ func setupRouter(store *Store) *gin.Engine {
 
 	return r
 }
+func main() {}
